@@ -1,0 +1,41 @@
+import { Component, OnInit } from '@angular/core';
+//componentes de form
+import {FormControl, Validators} from '@angular/forms';
+import{ContactModel} from '../model/contactoModel';
+import { NgForm } from '@angular/forms/src/directives/ng_form';
+import {HttpClient} from '@angular/common/http';
+
+@Component({
+  selector: 'app-contacto',
+  templateUrl: './contacto.component.html',
+  styleUrls: ['./contacto.component.css']
+})
+export class ContactoComponent implements OnInit {
+  ContactModel2 = new ContactModel();
+type:any;
+
+  constructor( private http: HttpClient) { }
+
+  ngOnInit() {
+  }
+
+
+onSubmit(f: NgForm){
+
+  
+console.log(f)
+console.log(this.ContactModel2)
+
+this.http.post('http://localhost/prueba/text.php', this.ContactModel2,{
+  headers : {
+      'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+  }
+} ) 
+.subscribe(res=>{
+  this.type = res;
+  console.log(this.type.status)
+
+})
+}
+
+}

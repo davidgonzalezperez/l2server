@@ -1,0 +1,8 @@
+
+<form (ngSubmit)="onSubmit(contactModel);" #contactModel="ngForm">
+    <input  placeholder="Nombre" [(ngModel)]="ContactModel2.user" name="user" required>
+    <input  placeholder="password" type="password" [(ngModel)]="ContactModel2.pass" name="pass" required>
+    
+    
+    <button type="submit" >Enviar</button>
+ </form>
