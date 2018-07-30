@@ -1,0 +1,117 @@
+import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
+//componentes de form
+import {FormControl, Validators} from '@angular/forms';
+import{ContactModel} from '../model/contactoModel';
+import { NgForm } from '@angular/forms/src/directives/ng_form';
+import {HttpClient} from '@angular/common/http';
+
+@Component({
+  selector: 'app-contacto',
+  templateUrl: './contacto.component.html',
+  styleUrls: ['./contacto.component.css']
+})
+export class ContactoComponent implements AfterViewInit {
+  @ViewChild('myId') myId: ElementRef;
+  
+  ngAfterViewInit(): void {
+    
+  }
+  ContactModel2 = new ContactModel();
+type:any; 
+hola:any
+hola1:any
+hola2:any
+hola3:any
+datos:any
+
+
+  constructor( private http: HttpClient ) {
+    
+   }
+
+  ngOnInit() {
+    
+    
+
+    function makeid() {
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    
+      for (var i = 0; i < 3; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    
+      return text;
+    }
+     this.hola = makeid();
+     this.hola1 = makeid();
+     this.hola2 = makeid();
+     this.hola3 = makeid();
+
+    
+  }
+
+
+  
+  descargarArchivo(contenidoEnBlob, nombreArchivo) {
+    var reader = new FileReader();
+    reader.onload = function (event) {
+        var save = document.createElement('a');
+        save.href = event.target.result;
+        save.target = '_blank';
+        save.download = nombreArchivo || 'archivo.dat';
+        var clicEvent = new MouseEvent('click', {
+            'view': window,
+                'bubbles': true,
+                'cancelable': true
+        });
+        save.dispatchEvent(clicEvent);
+        (window.URL).revokeObjectURL(save.href);
+    };
+    reader.readAsDataURL(contenidoEnBlob);
+};
+
+//Función de ayuda: reúne los datos a exportar en un solo objeto
+ obtenerDatos() {
+    return {
+        usuario: this.hola,
+        contraseña: this.ContactModel2.pass,
+        
+    };
+};
+
+
+
+//Genera un objeto Blob con los datos en un archivo TXT
+ generarTexto(datos) {
+    var texto = [];
+    texto.push('Datos Personales:\n');
+    texto.push('User: ');
+    texto.push(this.ContactModel2.user 
+    + this.hola);
+    texto.push('\n');
+    texto.push('contraseña: ');
+    texto.push(this.ContactModel2.pass);
+    texto.push('\n');
+    // texto.push('Fecha: ');
+    // texto.push(datos.fecha);
+    // texto.push('\n');
+    //El contructor de Blob requiere un Array en el primer parámetro
+    //así que no es necesario usar toString. el segundo parámetro
+    //es el tipo MIME del archivo
+    return new Blob(texto, {
+        type: 'text/plain'
+    });
+};
+
+funk(){
+this.datos=this.obtenerDatos();
+    this.descargarArchivo(this.generarTexto(this.datos), 'archivo.txt');}
+
+// getElementById('boton-txt').addEventListener('click', function () {
+ 
+
+
+//   var datos = obtenerDatos();
+//   descargarArchivo(generarTexto(datos), 'archivo.txt');
+// }, false);
+
