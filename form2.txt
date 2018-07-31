@@ -1,0 +1,24 @@
+https://stackoverflow.com/questions/39152071/cant-bind-to-formgroup-since-it-isnt-a-known-property-of-form
+
+
+
+validacion en angular 5, importamos en el module los formreactive (ReactiveFormsModule). y luego modificamos el ts del componente donde alojamos el form.
+
+ver ejemplo
+
+
+frmRegistro : FormGroup;
+ constructor( private http: HttpClient, private fb:FormBuilder ) {
+    this.frmRegistro = this.fb.group({
+user:['', Validators.required],
+pass:['', Validators.required]
+
+    })
+   }
+
+
+[formGroup]="frmRegistro"
+formControlName="user" y "pass", o cualquier campo que queramos validar.
+
+
+[disabled]="!frmRegistro.valid"
