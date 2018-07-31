@@ -1,0 +1,51 @@
+<?php
+
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+
+$id='localhost';
+$usuario='root';
+$password='';
+$db="hola";
+
+$postdata1='';
+$postdata = file_get_contents("php://input");
+$request = json_decode($postdata);
+
+$user = $request->user;
+$pass = $request->pass;
+
+$con=mysqli_connect($id,$usuario,$password)or die($postdata1="Problema al conectar a la bbdd");
+mysqli_select_db($con, $db)or die($postdata1="Problema al conectar a la bbdd");
+
+
+$result = mysqli_query($con, "SELECT login FROM accounts WHERE login='$user'");   
+
+
+while($row = mysqli_fetch_assoc($result)){
+    $test[] = $row; 
+}
+
+$test1=mysqli_num_rows($result);
+
+if($test1==0){
+	
+	mysqli_query($con, "INSERT INTO accounts (login,Password) VALUES ('$user','$pass')");
+	
+	$postdata1= Array(
+		'status' => 'Cuenta creada'
+		);
+	
+}
+else {
+	$postdata1= Array(
+		'status' => 'El usuario ya existe'
+		);
+
+}
+
+echo json_encode($postdata1);
+
+
+
+ ?>
