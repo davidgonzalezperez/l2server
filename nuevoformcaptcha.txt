@@ -1,0 +1,43 @@
+Para añadir el captcha, lo primero que vamos a hacer es copiar en el index.html lo siguiente 
+
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  
+
+
+Ahora nos vamos al componente donde tenemos el formulario y le vamos a añadir al html lo siguiente
+
+<re-captcha class="center-recaptcha"
+                [(ngModel)]="ContactModel2.captcha"
+                formControlName="captcha"
+                required (resolved)="resolved($event)"
+                siteKey="6LfWnmcUAAAAADsIzWPNgsvntayhuBojO0mZ0DD7"
+               
+                >
+    </re-captcha>
+
+
+<button type="button" (click)="ContactModel2.captcha =''">
+      Reset Captcha
+    </button>
+
+
+
+Ahora vamos al ts y añadimos 2 funciones, y el validador de angular al campo del form 
+
+captcha:['', Validators.required]
+
+
+
+
+  private resolved(captchaResponse: string) {
+      console.log(`Resolved captcha with response: ${captchaResponse}`);
+    }
+
+    private onSubmit() {
+      console.log(`Form Model:`, this.ContactModel2);
+      // Submit logic
+    }
+
+
+
