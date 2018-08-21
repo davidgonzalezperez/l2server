@@ -1,0 +1,28 @@
+install ngx, importar , meter al CONST, y a circular.
+
+<div id="barraaceptacion" style="display: block;">
+    <div>
+    
+  We use cookies to ensure that we give the best user experience on our website.
+  If you continue to use this site, we will assume that you agree.<br>
+    ->    <a href="javascript:void(0);" (click)="CloseCookie()" style="color:white;"><b>OK</b></a> <-
+        
+    </div>
+</div>
+
+
+
+#barraaceptacion {
+    display:none;
+    position:fixed;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    padding-bottom:20px;
+    width:100%;
+    text-align:center;
+    min-height:40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color:#fff;
+    z-index:99999;
+}
