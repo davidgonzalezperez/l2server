@@ -22,8 +22,7 @@ cookies={};
   CloseCookie(){
   
       this.cookies= {   
-        Game: 'LineageII',
-        Server: 'Antharas',
+        Server: 'LineageIIAntharas',
         Version: '2.8 L2Off'
      };
       this.cookieService.set('L2ANTHARAS', JSON.stringify(this.cookies));
@@ -31,3 +30,5 @@ cookies={};
     }
     
 }
+
+
