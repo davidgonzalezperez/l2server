@@ -1,5 +1,12 @@
 install ngx, importar , meter al CONST, y a circular.
 
+
+
+//agregamos fechas 
+var lahora=new Date(Date.UTC(2018,7,24,21,0,0,0));
+var countDownDate = lahora.getTime();
+
+
 <div id="barraaceptacion" style="display: block;">
     <div>
     
