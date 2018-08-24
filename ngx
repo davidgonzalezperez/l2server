@@ -70,3 +70,85 @@ var countDownDate = lahora.getTime();
     color:#fff;
     z-index:99999;
 }
+
+
+
+
+
+
+
+package pruebas;
+
+public class TST {
+	
+	
+	public static TST laconfiguracion(String nombre,String apellidos,int edad) {
+		if (miconfigurador==null) {
+			 
+			miconfigurador= new TST(nombre, apellidos,edad);
+			 }
+		
+		return miconfigurador;
+		
+	}
+	
+	
+	
+	private TST(String nombre,String apellidos,int edad) {
+		this.nombre=nombre;
+		this.apellidos=apellidos;
+		this.edad=edad;
+		
+	}
+
+	public String getNombre() {
+		return nombre+" "+apellidos;
+	}
+
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+
+
+	public int getEdad() {
+		return edad-5;
+	}
+
+
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public String getNombredeltuto() {
+		return Nombredeltuto;
+	}
+
+	public void setNombredeltuto(String nombredeltuto) {
+		Nombredeltuto = nombredeltuto;
+	}
+
+	private static TST miconfigurador;
+	private String nombre;
+	private String apellidos;
+	private int edad;
+	private String Nombredeltuto;
+	
+	
+	
+}
