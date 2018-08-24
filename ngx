@@ -1,7 +1,7 @@
 install ngx, importar , meter al CONST, y a circular.
 
 
-
+ var countDownDate=new Date(Date.UTC(2018,7,24,21,0,0,0)).getTime();
 //funcion modificada con la fecha en utc
  counter(){
     // Set the date we're counting down to
